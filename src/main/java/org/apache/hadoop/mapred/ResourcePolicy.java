@@ -204,6 +204,18 @@ public class ResourcePolicy {
       jobsInProgress.add(scheduler.jobTracker.getJob(status.getJobID()));
     }
 
+    // Reorder the offers according to the slave load hint
+    Collections.sort(offers, new Comparator<Offer>() {
+      public int compare(Offer lhs, Offer rhs) {
+        if (lhs.getSlaveLoadHint() > rhs.getSlaveLoadHint()) {
+          return 1;
+        } else if (lhs.getSlaveLoadHint() < rhs.getSlaveLoadHint()) {
+          return -1;
+        }
+        return 0;
+      }
+    });
+
     computeNeededSlots(jobsInProgress, taskTrackers);
 
     synchronized (scheduler) {
