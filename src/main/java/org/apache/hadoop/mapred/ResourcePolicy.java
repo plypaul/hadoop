@@ -384,15 +384,15 @@ public class ResourcePolicy {
 
         overrides.set("mapred.child.java.opts",
             scheduler.conf.get("mapred.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m");
+                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
 
         overrides.set("mapred.map.child.java.opts",
             scheduler.conf.get("mapred.map.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m");
+                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
 
         overrides.set("mapred.reduce.child.java.opts",
             scheduler.conf.get("mapred.reduce.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m");
+                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
 
         overrides.setLong("mapred.tasktracker.map.tasks.maximum",
             mapSlots);
