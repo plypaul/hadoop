@@ -384,15 +384,15 @@ public class ResourcePolicy {
 
         overrides.set("mapred.child.java.opts",
             scheduler.conf.get("mapred.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
 
         overrides.set("mapred.map.child.java.opts",
             scheduler.conf.get("mapred.map.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
 
         overrides.set("mapred.reduce.child.java.opts",
             scheduler.conf.get("mapred.reduce.child.java.opts") +
-                " -XX:+UseG1GC -XX:MaxGCPauseMillis=400 -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
 
         overrides.setLong("mapred.tasktracker.map.tasks.maximum",
             mapSlots);
