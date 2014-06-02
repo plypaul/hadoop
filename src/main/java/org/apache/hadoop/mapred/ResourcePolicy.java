@@ -384,15 +384,15 @@ public class ResourcePolicy {
 
         overrides.set("mapred.child.java.opts",
             scheduler.conf.get("mapred.child.java.opts") +
-                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k -XX:+UseLargePages");
 
         overrides.set("mapred.map.child.java.opts",
             scheduler.conf.get("mapred.map.child.java.opts") +
-                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k -XX:+UseLargePages");
 
         overrides.set("mapred.reduce.child.java.opts",
             scheduler.conf.get("mapred.reduce.child.java.opts") +
-                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k");
+                " -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+CMSParallelRemarkEnabled -XX:TargetSurvivorRatio=40 -XX:NewRatio=2 -XX:ParallelGCThreads=2 -XX:+AggressiveOpts -XX:+UseCompressedOops -XX:+UseFastEmptyMethods -XX:+UseFastAccessorMethods -Xmx" + slotJVMHeap + "m -Xms" + slotJVMHeap + "m -Xss256k -XX:+UseLargePages");
 
         overrides.setLong("mapred.tasktracker.map.tasks.maximum",
             mapSlots);
